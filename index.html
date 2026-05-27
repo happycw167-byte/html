@@ -104,13 +104,46 @@
 
                     <div class="org-chart">
                         <h3 class="mb-3">조직도</h3>
-                        <p class="mb-3 text-muted">경영지원, 생산부(구매/자재, 생산관리, 외주관리), 품질관리, 기업부설연구소 등 체계적인 조직 운영으로 최상의 품질을 보장합니다.</p>
+                        <p class="mb-3 text-muted">생산부(제품 생산, 원자재 구입), 관리부(계약 및 공정 관리), 품질보증부(품질 관리, A/S) 등 체계적이고 효율적인 조직 운영으로 최상의 품질을 보장합니다.</p>
                         
-                        <div class="org-chart-image mt-4" style="text-align: center; border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; background: white; box-shadow: var(--shadow-sm);">
-                            <img src="org_chart.png" alt="비에이텍 조직도" style="max-width: 100%; height: auto; display: inline-block;">
-                            <p class="mt-3 text-muted" style="font-size: 0.9rem;">
-                                <i class="ph ph-info"></i> 조직도 이미지(<code>org_chart.png</code>)가 올바르게 적용되었습니다.
-                            </p>
+                        <div class="org-chart-box">
+                            <!-- Level 1: CEO -->
+                            <div class="org-level-1">
+                                <div class="box">대표이사 조세연</div>
+                            </div>
+                            
+                            <!-- Level 2: Departments -->
+                            <div class="org-level-2">
+                                <!-- 생산부 -->
+                                <div class="org-col">
+                                    <div class="org-col-header">생산부</div>
+                                    <div class="org-col-body">
+                                        <p class="text-muted mb-2" style="font-size: 0.8rem; font-weight: 600;">제품생산 · 원자재구입</p>
+                                        <div class="org-col-item">부장 정충구</div>
+                                        <div class="org-col-item">부장 조태연</div>
+                                        <div class="org-col-item">과장 김진수</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 관리부 -->
+                                <div class="org-col">
+                                    <div class="org-col-header">관리부</div>
+                                    <div class="org-col-body">
+                                        <p class="text-muted mb-2" style="font-size: 0.8rem; font-weight: 600;">계약 및 공정관리</p>
+                                        <div class="org-col-item">이사 이원석</div>
+                                        <div class="org-col-item">실장 김홍인</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 품질보증부 -->
+                                <div class="org-col">
+                                    <div class="org-col-header">품질보증부</div>
+                                    <div class="org-col-body">
+                                        <p class="text-muted mb-2" style="font-size: 0.8rem; font-weight: 600;">품질관리 및 A/S</p>
+                                        <div class="org-col-item">사원 정영호</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -237,7 +270,11 @@
                             <i class="ph-fill ph-map-pin"></i>
                             <div>
                                 <strong>주소</strong>
-                                <p>강원특별자치도 춘천시 퇴계공단2길 64</p>
+                                <p>
+                                    <a href="https://www.google.com/maps/search/?api=1&query=강원특별자치도+춘천시+퇴계공단2길+64" target="_blank" class="btn-link" style="display: inline-flex; align-items: center; gap: 4px; margin-top: 0; text-decoration: underline;">
+                                        강원특별자치도 춘천시 퇴계공단2길 64 <i class="ph ph-arrow-square-out" style="font-size: 1rem;"></i>
+                                    </a>
+                                </p>
                             </div>
                         </li>
                         <li>
@@ -258,12 +295,24 @@
                             <i class="ph-fill ph-envelope-simple"></i>
                             <div>
                                 <strong>담당자 이메일</strong>
-                                <p>aaa@naver.com</p>
+                                <p><a href="mailto:gwf0123@hanmail.com" style="text-decoration: underline; color: var(--primary-blue);">gwf0123@hanmail.com</a></p>
                             </div>
                         </li>
                     </ul>
 
-                    <div class="mt-5 p-4 bg-light" style="border-radius: 8px; padding: 25px;">
+                    <!-- 구글 지도 연동 -->
+                    <div class="map-container mb-4" style="margin-top: 30px; height: 300px; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color);">
+                        <iframe 
+                            src="https://maps.google.com/maps?q=강원특별자치도%20춘천시%20퇴계공단2길%2064&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+
+                    <div class="mt-4 p-4 bg-light" style="border-radius: 8px; padding: 25px;">
                         <h4 class="mb-3">자료실 & 공지사항</h4>
                         <p class="text-muted mb-3">제품 카탈로그, 도면, 인증서 사본 등 다양한 자료를 확인하실 수 있습니다.</p>
                         <div style="display: flex; gap: 10px;">
@@ -321,7 +370,7 @@
                 <div class="footer-info">
                     <p>상호명: (주)비에이텍 | 대표이사: 조세연</p>
                     <p>주소: 강원특별자치도 춘천시 퇴계공단2길 64</p>
-                    <p>TEL: 033-264-9243 | FAX: 033-251-5747 | Email: aaa@naver.com</p>
+                    <p>TEL: 033-264-9243 | FAX: 033-251-5747 | Email: gwf0123@hanmail.com</p>
                 </div>
             </div>
             <div class="footer-bottom">
