@@ -211,5 +211,37 @@ document.addEventListener('DOMContentLoaded', () => {
             // 6. 비에이텍과 무관한 질문 필터링 (가장 중요한 요구사항)
             return "죄송합니다. 저는 (주)비에이텍과 관련된 질문(회사 소개, 제품 정보, 연락처 등)에만 답변할 수 있도록 설계되었습니다. 펌프 시스템이나 비에이텍에 대해 궁금하신 점을 다시 질문해 주시겠어요?";
         }
+        }
+    }
+
+    // 6. Reference Modal Logic
+    const refBtn = document.getElementById('btn-reference');
+    const refModal = document.getElementById('ref-modal');
+    const refModalClose = document.getElementById('ref-modal-close');
+    const refModalOverlay = document.querySelector('.ref-modal-overlay');
+
+    if (refBtn && refModal) {
+        // Open modal
+        refBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            refModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+
+        // Close modal
+        const closeRefModal = () => {
+            refModal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        if (refModalClose) refModalClose.addEventListener('click', closeRefModal);
+        if (refModalOverlay) refModalOverlay.addEventListener('click', closeRefModal);
+        
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && refModal.classList.contains('active')) {
+                closeRefModal();
+            }
+        });
     }
 });

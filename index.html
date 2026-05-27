@@ -316,7 +316,7 @@
                         <h4 class="mb-3">자료실 & 공지사항</h4>
                         <p class="text-muted mb-3">제품 카탈로그, 도면, 인증서 사본 등 다양한 자료를 확인하실 수 있습니다.</p>
                         <div style="display: flex; gap: 10px;">
-                            <a href="#" class="btn btn-primary btn-sm">자료실 바로가기</a>
+                            <a href="javascript:void(0)" id="btn-reference" class="btn btn-primary btn-sm">자료실 바로가기</a>
                             <a href="#" class="btn btn-outline btn-sm" style="border-color: var(--primary-blue); color: var(--primary-blue);">사내 공지사항</a>
                         </div>
                     </div>
@@ -378,6 +378,66 @@
             </div>
         </div>
     </footer>
+
+    <!-- Reference Modal -->
+    <div id="ref-modal" class="ref-modal">
+        <div class="ref-modal-overlay"></div>
+        <div class="ref-modal-content">
+            <div class="ref-modal-header">
+                <h3><i class="ph-fill ph-folder-open"></i> 자료실</h3>
+                <button id="ref-modal-close" class="ref-modal-close" aria-label="닫기">
+                    <i class="ph ph-x"></i>
+                </button>
+            </div>
+            <div class="ref-modal-body">
+                <!-- Section 1: 사진대장 -->
+                <div class="ref-section">
+                    <h4 class="ref-section-title">공장 사진대장</h4>
+                    <p class="ref-desc">비에이텍(주) 공장의 주요 전경 및 설비를 확인할 수 있는 사진대장입니다.</p>
+                    <div class="ref-card">
+                        <div class="ref-card-icon"><i class="ph-fill ph-file-pdf" style="color: #e74c3c;"></i></div>
+                        <div class="ref-card-info">
+                            <h5>사진대장 - 비에이텍(주) 공장</h5>
+                            <span>PDF 문서</span>
+                        </div>
+                        <a href="./사진대장 - 비에이텍(주) 공장.pdf" target="_blank" class="btn btn-primary btn-sm">열람 / 다운로드</a>
+                    </div>
+                </div>
+                
+                <!-- Section 2: 유지관리지침서 -->
+                <div class="ref-section mt-4">
+                    <h4 class="ref-section-title">펌프 유지관리지침서</h4>
+                    <p class="ref-desc">각 제품별 유지관리 매뉴얼을 다운로드하실 수 있습니다.</p>
+                    <div class="ref-grid">
+                        <a href="./부스터펌프 유지관리지침서.pdf" target="_blank" class="ref-grid-item">
+                            <i class="ph ph-file-pdf"></i>
+                            <span>부스터펌프</span>
+                        </a>
+                        <a href="./수중펌프 유지관리지침서.pdf" target="_blank" class="ref-grid-item">
+                            <i class="ph ph-file-pdf"></i>
+                            <span>수중펌프</span>
+                        </a>
+                        <a href="./슬러지펌프 유지관리지침서.pdf" target="_blank" class="ref-grid-item">
+                            <i class="ph ph-file-pdf"></i>
+                            <span>슬러지펌프</span>
+                        </a>
+                        <a href="./일축나사식 모노펌프 유지관리지침서.pdf" target="_blank" class="ref-grid-item">
+                            <i class="ph ph-file-pdf"></i>
+                            <span>일축 모노펌프</span>
+                        </a>
+                        <a href="./정량펌프 유지관리지침서.pdf" target="_blank" class="ref-grid-item">
+                            <i class="ph ph-file-pdf"></i>
+                            <span>정량펌프</span>
+                        </a>
+                        <a href="./편흡입볼류트펌프 유지관리지침서.pdf" target="_blank" class="ref-grid-item">
+                            <i class="ph ph-file-pdf"></i>
+                            <span>편흡입볼류트펌프</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- AI Chatbot Widget -->
     <div id="ai-chat-widget" class="ai-chat-widget">
