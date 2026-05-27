@@ -14,7 +14,7 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
     <style>
         .border-top { border-top: 1px solid var(--border-color); }
         .pt-5 { padding-top: 40px; }
@@ -45,7 +45,7 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-bg">
-            <img src="assets/images/hero.png" alt="워터 펌프">
+            <img src="hero.png" alt="워터 펌프">
             <div class="hero-overlay"></div>
         </div>
         <div class="container hero-content fade-up">
@@ -107,10 +107,9 @@
                         <p class="mb-3 text-muted">경영지원, 생산부(구매/자재, 생산관리, 외주관리), 품질관리, 기업부설연구소 등 체계적인 조직 운영으로 최상의 품질을 보장합니다.</p>
                         
                         <div class="org-chart-image mt-4" style="text-align: center; border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; background: white; box-shadow: var(--shadow-sm);">
-                            <!-- 사용자가 엑셀 파일을 캡처한 이미지로 교체할 수 있도록 placeholder 이미지를 적용했습니다 -->
-                            <img src="assets/images/org_chart.png" alt="비에이텍 조직도" style="max-width: 100%; height: auto; display: inline-block;">
+                            <img src="org_chart.png" alt="비에이텍 조직도" style="max-width: 100%; height: auto; display: inline-block;">
                             <p class="mt-3 text-muted" style="font-size: 0.9rem;">
-                                <i class="ph ph-info"></i> 현재 임시 이미지가 적용되어 있습니다. 첨부하신 엑셀 조직도를 캡처하여 <code>assets/images/org_chart.png</code> 파일로 덮어쓰기 하시면 바로 반영됩니다.
+                                <i class="ph ph-info"></i> 조직도 이미지(<code>org_chart.png</code>)가 올바르게 적용되었습니다.
                             </p>
                         </div>
                     </div>
@@ -141,7 +140,7 @@
                         <div class="eq-icon"><i class="ph ph-certificate"></i></div>
                         <h4 style="color: var(--primary-blue);">ISO 9001:2015</h4>
                         <p class="text-muted">품질경영시스템 국제 규격 인증</p>
-                        <a href="./ISO9001인증서.pdf" target="_blank" class="btn-link" style="display: inline-flex; align-items: center; gap: 5px;">
+                        <a href="./iso9001인증서.pdf" target="_blank" class="btn-link" style="display: inline-flex; align-items: center; gap: 5px;">
                             <i class="ph ph-file-pdf" style="font-size: 1.2rem;"></i> 인증서 보기
                         </a>
                     </div>
@@ -160,7 +159,9 @@
             
             <div class="service-grid mt-5">
                 <div class="service-card fade-up">
-                    <div class="service-icon"><i class="ph-fill ph-drop"></i></div>
+                    <div style="margin-bottom: 20px; overflow: hidden; border-radius: 6px; background-color: var(--bg-light); padding: 10px; display: flex; align-items: center; justify-content: center; height: 180px;">
+                        <img src="booster_pump.png" alt="부스터 펌프 시스템" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    </div>
                     <h3>부스터 펌프 시스템</h3>
                     <p class="mb-3">위생안전기준을 통과한 지상용 수직형 다단 펌프 위주로 안정적인 수압 유지와 최적의 에너지 효율을 제공합니다.</p>
                     <div class="text-left mt-4 p-3 bg-light" style="border-radius: 8px; padding: 15px;">
@@ -173,7 +174,9 @@
                     </div>
                 </div>
                 <div class="service-card fade-up" style="transition-delay: 0.1s;">
-                    <div class="service-icon"><i class="ph-fill ph-gear"></i></div>
+                    <div style="margin-bottom: 20px; overflow: hidden; border-radius: 6px; background-color: var(--bg-light); padding: 10px; display: flex; align-items: center; justify-content: center; height: 180px;">
+                        <img src="equipment.png" alt="산업용 펌프" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    </div>
                     <h3>산업용 펌프</h3>
                     <p class="mb-3">다양한 산업 현장의 요구에 맞춘 고성능 산업용 펌프 솔루션을 제공합니다.</p>
                     <div class="text-left mt-4 p-3 bg-light" style="border-radius: 8px; padding: 15px;">
@@ -328,6 +331,6 @@
     </footer>
 
     <!-- JS -->
-    <script src="js/main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
