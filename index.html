@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(주)비에이텍 - 워터 펌프 제작 및 수리 전문</title>
+    <meta name="description" content="(주)비에이텍은 워터 펌프 제작, 설치, 유지보수 및 수리를 전문으로 하는 기업입니다. 위생안전기준 인증, MAIN-BIZ 인증, ISO 9001:2015 인증.">
+    <meta name="keywords" content="워터 펌프, (주)비에이텍, 부스터 펌프 시스템, 산업용 펌프, 수직형 다단 펌프, 펌프 제어">
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    
+    <!-- Icons (Phosphor Icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .border-top { border-top: 1px solid var(--border-color); }
+        .pt-5 { padding-top: 40px; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                <i class="ph-fill ph-drop"></i> BEATECH
+            </a>
+            
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="메뉴 열기">
+                <i class="ph ph-list"></i>
+            </button>
+
+            <nav class="nav-links" id="nav-links">
+                <a href="#company" class="nav-link">회사소개</a>
+                <a href="#products" class="nav-link">제품소개</a>
+                <a href="#rnd" class="nav-link">연구개발</a>
+                <a href="#support" class="nav-link">고객지원</a>
+                <a href="#inquiry" class="btn btn-primary nav-btn">문의하기</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <img src="assets/images/hero.png" alt="워터 펌프">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container hero-content fade-up">
+            <span class="badge">위생안전기준 · MAIN-BIZ · ISO 9001:2015 인증 기업</span>
+            <h1>혁신적인 기술력으로<br><span class="highlight">최적의 펌프 솔루션</span></h1>
+            <p>(주)비에이텍은 차별화된 펌프 제어 및 위생 관리 기술로 고품질의 안전한 물 공급 환경을 제공합니다.</p>
+            <div class="hero-buttons">
+                <a href="#inquiry" class="btn btn-primary btn-lg">견적 및 상담 문의</a>
+                <a href="#products" class="btn btn-outline btn-lg">제품 살펴보기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. 회사소개 (Company) -->
+    <section id="company" class="about section bg-light">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <h2 class="section-title">회사소개</h2>
+                <p>Company</p>
+            </div>
+            
+            <div class="about-grid mt-4">
+                <!-- CEO 인사말 -->
+                <div class="about-text fade-up">
+                    <h3 class="mb-3">CEO 인사말</h3>
+                    <p>안녕하십니까, (주)비에이텍을 찾아주신 고객 여러분 환영합니다.</p>
+                    <p>저희 비에이텍은 지속적인 기술 개발과 혁신을 통해 최고의 펌프 솔루션을 제공하는 기업입니다. 항상 고객의 만족을 최우선으로 생각하며, 철저한 품질 관리와 신뢰할 수 있는 기술력으로 안전하고 효율적인 물 공급 시스템을 약속드립니다.</p>
+                    <p>앞으로도 끊임없는 연구개발과 혁신을 통해 더욱 신뢰받는 파트너가 되겠습니다. 감사합니다.</p>
+                    
+                    <div class="ceo-sign mt-4">
+                        <span>대표이사</span> <strong>조세연</strong>
+                    </div>
+                </div>
+                
+                <!-- 기업 개요 및 조직도 -->
+                <div class="fade-up">
+                    <div class="company-overview mb-5">
+                        <h3 class="mb-3">기업 개요</h3>
+                        <ul class="info-list" style="margin-top:0;">
+                            <li>
+                                <i class="ph-fill ph-map-pin"></i>
+                                <div>
+                                    <strong>본사 및 공장</strong>
+                                    <p>강원특별자치도 춘천시 퇴계공단2길 64</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="ph-fill ph-buildings"></i>
+                                <div>
+                                    <strong>주요 사업 영역</strong>
+                                    <p>부스터 펌프 시스템, 산업용 펌프 제조 및 판매</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="org-chart">
+                        <h3 class="mb-3">조직도</h3>
+                        <p class="mb-3 text-muted">경영지원, 생산부(구매/자재, 생산관리, 외주관리), 품질관리, 기업부설연구소 등 체계적인 조직 운영으로 최상의 품질을 보장합니다.</p>
+                        
+                        <div class="org-chart-image mt-4" style="text-align: center; border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; background: white; box-shadow: var(--shadow-sm);">
+                            <!-- 사용자가 엑셀 파일을 캡처한 이미지로 교체할 수 있도록 placeholder 이미지를 적용했습니다 -->
+                            <img src="assets/images/org_chart.png" alt="비에이텍 조직도" style="max-width: 100%; height: auto; display: inline-block;">
+                            <p class="mt-3 text-muted" style="font-size: 0.9rem;">
+                                <i class="ph ph-info"></i> 현재 임시 이미지가 적용되어 있습니다. 첨부하신 엑셀 조직도를 캡처하여 <code>assets/images/org_chart.png</code> 파일로 덮어쓰기 하시면 바로 반영됩니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 인증 및 수상 -->
+            <div class="awards mt-5 pt-5 border-top fade-up text-center">
+                <h3 class="mb-4">인증 및 수상</h3>
+                <div class="equipment-grid mt-4" style="margin-top: 0;">
+                    <div class="eq-card" style="background: white; border: 1px solid var(--border-color); color: var(--text-main);">
+                        <div class="eq-icon"><i class="ph ph-shield-check"></i></div>
+                        <h4 style="color: var(--primary-blue);">위생안전기준 인증 (KC)</h4>
+                        <p class="text-muted">부스터 펌프 시스템에 대한 품질 인증</p>
+                        <a href="./KC인증서.pdf" target="_blank" class="btn-link" style="display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="ph ph-file-pdf" style="font-size: 1.2rem;"></i> 인증서 보기
+                        </a>
+                    </div>
+                    <div class="eq-card" style="background: white; border: 1px solid var(--border-color); color: var(--text-main);">
+                        <div class="eq-icon"><i class="ph ph-medal"></i></div>
+                        <h4 style="color: var(--primary-blue);">MAIN-BIZ</h4>
+                        <p class="text-muted">경영혁신형 중소기업 인증 보유</p>
+                        <a href="./메인비즈%20확인서(기한27.09.13.).pdf" target="_blank" class="btn-link" style="display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="ph ph-file-pdf" style="font-size: 1.2rem;"></i> 인증서 보기
+                        </a>
+                    </div>
+                    <div class="eq-card" style="background: white; border: 1px solid var(--border-color); color: var(--text-main);">
+                        <div class="eq-icon"><i class="ph ph-certificate"></i></div>
+                        <h4 style="color: var(--primary-blue);">ISO 9001:2015</h4>
+                        <p class="text-muted">품질경영시스템 국제 규격 인증</p>
+                        <a href="./ISO9001인증서.pdf" target="_blank" class="btn-link" style="display: inline-flex; align-items: center; gap: 5px;">
+                            <i class="ph ph-file-pdf" style="font-size: 1.2rem;"></i> 인증서 보기
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 제품소개 (Products) -->
+    <section id="products" class="services section">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <h2 class="section-title">제품소개</h2>
+                <p>Products</p>
+            </div>
+            
+            <div class="service-grid mt-5">
+                <div class="service-card fade-up">
+                    <div class="service-icon"><i class="ph-fill ph-drop"></i></div>
+                    <h3>부스터 펌프 시스템</h3>
+                    <p class="mb-3">위생안전기준을 통과한 지상용 수직형 다단 펌프 위주로 안정적인 수압 유지와 최적의 에너지 효율을 제공합니다.</p>
+                    <div class="text-left mt-4 p-3 bg-light" style="border-radius: 8px; padding: 15px;">
+                        <h4 class="mb-2" style="font-size: 1rem; color: var(--text-main);">기술 사양</h4>
+                        <ul class="list-unstyled text-muted mb-0">
+                            <li><strong>모델명:</strong> BA 시리즈 등</li>
+                            <li><strong>재질:</strong> 스테인리스 (위생 안전 확보)</li>
+                            <li><strong>특징:</strong> 인버터 제어, 고효율, 저소음</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card fade-up" style="transition-delay: 0.1s;">
+                    <div class="service-icon"><i class="ph-fill ph-gear"></i></div>
+                    <h3>산업용 펌프</h3>
+                    <p class="mb-3">다양한 산업 현장의 요구에 맞춘 고성능 산업용 펌프 솔루션을 제공합니다.</p>
+                    <div class="text-left mt-4 p-3 bg-light" style="border-radius: 8px; padding: 15px;">
+                        <h4 class="mb-2" style="font-size: 1rem; color: var(--text-main);">주요 제품군</h4>
+                        <ul class="list-unstyled text-muted mb-0">
+                            <li>- 벌류트 펌프</li>
+                            <li>- 정량 펌프, 수중 펌프</li>
+                            <li>- 오수/슬러지 펌프</li>
+                            <li>- 심정용 펌프 등</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 연구개발 (R&D) -->
+    <section id="rnd" class="rnd section bg-dark text-white">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <h2 class="section-title">연구개발</h2>
+                <p>R&D</p>
+            </div>
+            <div class="about-grid mt-5">
+                <div class="fade-up">
+                    <div class="mb-4 text-center">
+                        <i class="ph ph-flask" style="font-size: 4rem; color: var(--accent-blue);"></i>
+                    </div>
+                    <h3 class="text-center mb-3">기업부설연구소</h3>
+                    <p class="text-center" style="color: rgba(255, 255, 255, 0.8);">제품 설계 및 개발, 신규 아이템 발굴 등 기술력의 핵심입니다. 혁신적인 아이디어와 체계적인 연구를 통해 (주)비에이텍의 미래 경쟁력을 이끌어갑니다.</p>
+                </div>
+                <div class="fade-up" style="transition-delay: 0.1s;">
+                    <div class="mb-4 text-center">
+                        <i class="ph ph-cpu" style="font-size: 4rem; color: var(--accent-blue);"></i>
+                    </div>
+                    <h3 class="text-center mb-3">핵심 기술</h3>
+                    <p class="text-center" style="color: rgba(255, 255, 255, 0.8);">비에이텍만의 <strong>차별화된 펌프 제어 및 위생 관리 기술</strong>로 스마트한 수자원 관리를 실현합니다. 고객의 환경에 맞춘 최적화된 시스템을 제공합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 고객지원 (Customer Support) -->
+    <section id="support" class="contact section">
+        <div class="container">
+            <div class="section-header text-center fade-up">
+                <h2 class="section-title">고객지원</h2>
+                <p>Customer Support</p>
+            </div>
+            <div class="contact-layout mt-5">
+                <!-- Info -->
+                <div class="contact-info fade-up">
+                    <h3 class="mb-3">연락처 및 오시는 길</h3>
+                    <p class="contact-desc">견적 요청 및 제품 문의사항이 있으시면 언제든지 연락 주시기 바랍니다.</p>
+                    
+                    <ul class="info-list">
+                        <li>
+                            <i class="ph-fill ph-map-pin"></i>
+                            <div>
+                                <strong>주소</strong>
+                                <p>강원특별자치도 춘천시 퇴계공단2길 64</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="ph-fill ph-phone"></i>
+                            <div>
+                                <strong>전화번호</strong>
+                                <p>033) 264-9243</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="ph-fill ph-printer"></i>
+                            <div>
+                                <strong>팩스 (FAX)</strong>
+                                <p>033) 251-5747</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="ph-fill ph-envelope-simple"></i>
+                            <div>
+                                <strong>담당자 이메일</strong>
+                                <p>aaa@naver.com</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="mt-5 p-4 bg-light" style="border-radius: 8px; padding: 25px;">
+                        <h4 class="mb-3">자료실 & 공지사항</h4>
+                        <p class="text-muted mb-3">제품 카탈로그, 도면, 인증서 사본 등 다양한 자료를 확인하실 수 있습니다.</p>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="#" class="btn btn-primary btn-sm">자료실 바로가기</a>
+                            <a href="#" class="btn btn-outline btn-sm" style="border-color: var(--primary-blue); color: var(--primary-blue);">사내 공지사항</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Inquiry Form -->
+                <div class="inquiry-form-container fade-up" id="inquiry">
+                    <h3 class="form-title">문의하기</h3>
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">고객명 / 회사명 <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" required placeholder="이름 또는 회사명을 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">연락처 <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" required placeholder="010-0000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="type">문의 유형 <span class="required">*</span></label>
+                            <div class="custom-select">
+                                <select id="type" name="type" required>
+                                    <option value="" disabled selected>유형을 선택하세요</option>
+                                    <option value="quote">견적 요청</option>
+                                    <option value="tech">기술 상담</option>
+                                    <option value="as">유지보수 및 A/S</option>
+                                    <option value="other">기타 문의</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">문의 내용 <span class="required">*</span></label>
+                            <textarea id="message" name="message" rows="5" required placeholder="상세한 견적 요청 및 기술 상담 내용을 입력해주세요"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">문의 접수하기 <i class="ph-bold ph-paper-plane-right"></i></button>
+                    </form>
+                    <div id="form-success" class="form-message success" style="display: none;">
+                        <i class="ph-fill ph-check-circle"></i> 문의가 성공적으로 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="ph-fill ph-drop"></i> BEATECH
+                </div>
+                <div class="footer-info">
+                    <p>상호명: (주)비에이텍 | 대표이사: 조세연</p>
+                    <p>주소: 강원특별자치도 춘천시 퇴계공단2길 64</p>
+                    <p>TEL: 033-264-9243 | FAX: 033-251-5747 | Email: aaa@naver.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 BEATECH Co., Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
