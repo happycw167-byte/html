@@ -106,4 +106,110 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1500);
         });
     }
+
+    // 5. AI Chatbot Logic (Mock)
+    const chatToggle = document.getElementById('ai-chat-toggle');
+    const chatWindow = document.getElementById('ai-chat-window');
+    const chatClose = document.getElementById('ai-chat-close');
+    const chatInput = document.getElementById('chat-input');
+    const chatSendBtn = document.getElementById('chat-send');
+    const chatBody = document.getElementById('chat-body');
+
+    if (chatToggle && chatWindow) {
+        // Toggle Chat Window
+        chatToggle.addEventListener('click', () => {
+            chatWindow.classList.add('active');
+            chatInput.focus();
+        });
+
+        chatClose.addEventListener('click', () => {
+            chatWindow.classList.remove('active');
+        });
+
+        // Send Message
+        const sendMessage = () => {
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            // Add User Message
+            addMessage(text, 'user-message');
+            chatInput.value = '';
+            
+            // Show Typing Indicator
+            showTypingIndicator();
+
+            // Get AI Response (Mock)
+            setTimeout(() => {
+                removeTypingIndicator();
+                const response = getAIResponse(text);
+                addMessage(response, 'ai-message');
+            }, 1000 + Math.random() * 1000); // 1~2초 딜레이
+        };
+
+        chatSendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        // Helper Functions
+        function addMessage(text, className) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `chat-message ${className}`;
+            msgDiv.textContent = text;
+            chatBody.appendChild(msgDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const indicator = document.createElement('div');
+            indicator.className = 'typing-indicator';
+            indicator.id = 'typing-indicator';
+            indicator.innerHTML = `
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            `;
+            chatBody.appendChild(indicator);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) indicator.remove();
+        }
+
+        // Mock AI Logic focusing ONLY on BEATECH
+        function getAIResponse(query) {
+            // 정규식으로 질문 키워드 분석
+            const q = query.replace(/\s+/g, '');
+            
+            // 1. 인사말
+            if (/안녕|반가워|하이/.test(q)) {
+                return "안녕하세요! 저는 비에이텍의 펌프 시스템과 기술에 대해 안내해 드리는 AI 도우미입니다. 궁금하신 점을 말씀해 주세요.";
+            }
+            
+            // 2. 회사 위치/주소/연락처
+            if (/주소|위치|어디|연락처|전화번호|번호|팩스|이메일/.test(q)) {
+                return "(주)비에이텍의 본사 및 공장은 '강원특별자치도 춘천시 퇴계공단2길 64'에 위치해 있습니다. 전화번호는 033) 264-9243, 팩스는 033) 251-5747, 이메일은 gwf0123@hanmail.com 입니다.";
+            }
+            
+            // 3. 제품 소개
+            if (/제품|부스터펌프|부스터|수직형|다단|산업용|벌류트|수중|심정용|오수|슬러지/.test(q)) {
+                return "비에이텍은 위생안전기준을 통과한 지상용 수직형 다단 펌프 위주의 '부스터 펌프 시스템'과, 고성능 '산업용 펌프(벌류트, 정량, 수중, 오수/슬러지 펌프 등)'를 제조 및 판매하고 있습니다. 차별화된 인버터 제어로 고효율, 저소음을 자랑합니다.";
+            }
+            
+            // 4. 회사 소개/대표
+            if (/대표|조세연|회사|소개|비에이텍이뭐야|무슨회사|인증|KC|메인비즈|MAIN-BIZ|ISO/.test(q)) {
+                return "(주)비에이텍은 조세연 대표이사가 이끄는 워터 펌프 전문 기업으로, 위생안전기준(KC), MAIN-BIZ, ISO 9001:2015 인증을 보유하고 있습니다. 차별화된 펌프 제어 및 위생 관리 기술을 제공합니다.";
+            }
+
+            // 5. 조직/부서
+            if (/조직도|생산부|관리부|품질보증부|부서/.test(q)) {
+                return "비에이텍은 대표이사 산하에 생산부(제품 생산, 원자재 구입), 관리부(계약 및 공정 관리), 품질보증부(품질 관리, A/S)로 구성되어 체계적으로 운영되고 있습니다.";
+            }
+
+            // 6. 비에이텍과 무관한 질문 필터링 (가장 중요한 요구사항)
+            return "죄송합니다. 저는 (주)비에이텍과 관련된 질문(회사 소개, 제품 정보, 연락처 등)에만 답변할 수 있도록 설계되었습니다. 펌프 시스템이나 비에이텍에 대해 궁금하신 점을 다시 질문해 주시겠어요?";
+        }
+    }
 });
