@@ -379,6 +379,37 @@
         </div>
     </footer>
 
+    <!-- AI Chatbot Widget -->
+    <div id="ai-chat-widget" class="ai-chat-widget">
+        <button id="ai-chat-toggle" class="ai-chat-toggle" aria-label="AI 상담 봇 열기">
+            <i class="ph-fill ph-chat-circle-dots"></i>
+        </button>
+        
+        <div id="ai-chat-window" class="ai-chat-window">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <i class="ph-fill ph-robot"></i> 비에이텍 AI 도우미
+                </div>
+                <button id="ai-chat-close" class="chat-close" aria-label="닫기">
+                    <i class="ph ph-x"></i>
+                </button>
+            </div>
+            
+            <div id="chat-body" class="chat-body">
+                <div class="chat-message ai-message">
+                    안녕하세요! (주)비에이텍 AI 도우미입니다. 비에이텍의 펌프, 회사 소개 등에 대해 무엇이든 물어보세요!
+                </div>
+            </div>
+            
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="메시지를 입력하세요..." autocomplete="off">
+                <button id="chat-send" class="chat-send" aria-label="전송">
+                    <i class="ph-fill ph-paper-plane-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- JS -->
     <script src="main.js"></script>
 </body>
