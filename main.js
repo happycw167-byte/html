@@ -211,7 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // 6. 비에이텍과 무관한 질문 필터링 (가장 중요한 요구사항)
             return "죄송합니다. 저는 (주)비에이텍과 관련된 질문(회사 소개, 제품 정보, 연락처 등)에만 답변할 수 있도록 설계되었습니다. 펌프 시스템이나 비에이텍에 대해 궁금하신 점을 다시 질문해 주시겠어요?";
         }
-        }
     }
 
     // 6. Reference Modal Logic
