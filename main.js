@@ -80,22 +80,57 @@ document.addEventListener('DOMContentLoaded', () => {
         fadeObserver.observe(element);
     });
 
-    // 4. Contact Form Submission (mailto 방식)
+    // 4. Contact Form Submission (Web3Forms API)
     const contactForm = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
     
     if (contactForm) {
-        contactForm.addEventListener('submit', () => {
-            // mailto 방식은 페이지 이동 없이 사용자의 이메일 앱(아웃룩, 메일 등)을 엽니다.
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            if (submitBtn) {
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="ph-bold ph-check"></i> 이메일 앱이 열립니다...';
-                
-                // 페이지 전환이 안 일어나므로 3초 뒤 원래 버튼으로 복구
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalText;
-                }, 3000);
+            const originalText = submitBtn.innerHTML;
+            
+            // Access Key 확인 (사용자가 입력했는지)
+            const accessKey = contactForm.querySelector('input[name="access_key"]').value;
+            if (accessKey === 'YOUR_ACCESS_KEY_HERE') {
+                alert('Web3Forms 인증키(Access Key)가 입력되지 않았습니다. 개발자에게 키를 전달해 주세요.');
+                return;
             }
+
+            submitBtn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> 전송 중...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(contactForm);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    contactForm.style.display = 'none';
+                    formSuccess.style.display = 'flex';
+                } else {
+                    console.log(response);
+                    alert(json.message || '오류가 발생했습니다.');
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
         });
     }
 

@@ -325,7 +325,11 @@
                 <!-- Inquiry Form -->
                 <div class="inquiry-form-container fade-up" id="inquiry">
                     <h3 class="form-title">문의하기</h3>
-                    <form id="contact-form" class="contact-form" action="mailto:happycw167@gmail.com" method="POST" enctype="text/plain">
+                    <form id="contact-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <!-- Web3Forms Access Key (To be filled) -->
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                        <input type="hidden" name="subject" value="[비에이텍 웹사이트] 새로운 문의가 접수되었습니다">
+                        <input type="hidden" name="from_name" value="비에이텍 웹사이트">
                         <div class="form-group">
                             <label for="name">고객명 / 회사명 <span class="required">*</span></label>
                             <input type="text" id="name" name="name" required placeholder="이름 또는 회사명을 입력하세요">
