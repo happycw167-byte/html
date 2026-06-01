@@ -80,16 +80,21 @@ document.addEventListener('DOMContentLoaded', () => {
         fadeObserver.observe(element);
     });
 
-    // 4. Contact Form Submission (기본 HTML Action 사용)
+    // 4. Contact Form Submission (mailto 방식)
     const contactForm = document.getElementById('contact-form');
     
     if (contactForm) {
         contactForm.addEventListener('submit', () => {
-            // 브라우저의 기본 form 전송(FormSubmit 사이트로 이동)을 허용합니다.
-            // 전송 중임을 시각적으로 보여주기 위해 버튼 텍스트만 임시 변경합니다.
+            // mailto 방식은 페이지 이동 없이 사용자의 이메일 앱(아웃룩, 메일 등)을 엽니다.
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             if (submitBtn) {
-                submitBtn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> 전송 대기 중...';
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="ph-bold ph-check"></i> 이메일 앱이 열립니다...';
+                
+                // 페이지 전환이 안 일어나므로 3초 뒤 원래 버튼으로 복구
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                }, 3000);
             }
         });
     }
