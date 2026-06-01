@@ -80,42 +80,17 @@ document.addEventListener('DOMContentLoaded', () => {
         fadeObserver.observe(element);
     });
 
-    // 4. Contact Form Submission
+    // 4. Contact Form Submission (기본 HTML Action 사용)
     const contactForm = document.getElementById('contact-form');
-    const formSuccess = document.getElementById('form-success');
-
+    
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
+        contactForm.addEventListener('submit', () => {
+            // 브라우저의 기본 form 전송(FormSubmit 사이트로 이동)을 허용합니다.
+            // 전송 중임을 시각적으로 보여주기 위해 버튼 텍스트만 임시 변경합니다.
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> 전송 중...';
-            submitBtn.disabled = true;
-
-            // 폼 데이터 가져오기
-            const formData = new FormData(contactForm);
-            
-            // FormSubmit API를 사용한 이메일 전송 (AJAX 방식)
-            fetch("https://formsubmit.co/ajax/happycw1004@naver.com", {
-                method: "POST",
-                headers: { 
-                    'Accept': 'application/json'
-                },
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                // 성공 메시지 표시
-                contactForm.style.display = 'none';
-                formSuccess.style.display = 'flex';
-            })
-            .catch(error => {
-                console.error(error);
-                alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            });
+            if (submitBtn) {
+                submitBtn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> 전송 대기 중...';
+            }
         });
     }
 
