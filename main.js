@@ -80,57 +80,51 @@ document.addEventListener('DOMContentLoaded', () => {
         fadeObserver.observe(element);
     });
 
-    // 4. Contact Form Submission (Web3Forms API)
+    // 4. Contact Form Submission (Gmail 웹 연동 방식)
     const contactForm = document.getElementById('contact-form');
-    const formSuccess = document.getElementById('form-success');
     
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+            e.preventDefault(); // 폼 새로고침 방지
             
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="ph-bold ph-check"></i> Gmail 창이 열립니다...';
             
-            // Access Key 확인 (사용자가 입력했는지)
-            const accessKey = contactForm.querySelector('input[name="access_key"]').value;
-            if (accessKey === 'YOUR_ACCESS_KEY_HERE') {
-                alert('Web3Forms 인증키(Access Key)가 입력되지 않았습니다. 개발자에게 키를 전달해 주세요.');
-                return;
-            }
-
-            submitBtn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> 전송 중...';
-            submitBtn.disabled = true;
-
-            const formData = new FormData(contactForm);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
-
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: json
-            })
-            .then(async (response) => {
-                let json = await response.json();
-                if (response.status == 200) {
-                    contactForm.style.display = 'none';
-                    formSuccess.style.display = 'flex';
-                } else {
-                    console.log(response);
-                    alert(json.message || '오류가 발생했습니다.');
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }
-            })
-            .catch(error => {
-                console.log(error);
-                alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+            // 폼 데이터 수집
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const type = document.getElementById('type').value;
+            const message = document.getElementById('message').value;
+            
+            const typeMap = {
+                quote: '견적 요청',
+                tech: '기술 상담',
+                as: '유지보수 및 A/S',
+                other: '기타 문의'
+            };
+            const typeText = typeMap[type] || '기타 문의';
+            
+            // 이메일 내용 인코딩
+            const subject = encodeURIComponent('[비에이텍 웹사이트] 새로운 문의가 접수되었습니다.');
+            const body = encodeURIComponent(
+                `■ 고객명 / 회사명: ${name}\n` +
+                `■ 연락처: ${phone}\n` +
+                `■ 문의 유형: ${typeText}\n\n` +
+                `■ 문의 내용:\n${message}\n`
+            );
+            
+            // 데스크탑 및 모바일 브라우저에서 모두 작동하는 Gmail 작성창 URL
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=happycw167@gmail.com&su=${subject}&body=${body}`;
+            
+            // 새 탭에서 Gmail 작성창 열기
+            window.open(gmailUrl, '_blank');
+            
+            // 3초 후 버튼 원래대로 복구하고 폼 초기화
+            setTimeout(() => {
                 submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            });
+                contactForm.reset();
+            }, 3000);
         });
     }
 
