@@ -224,56 +224,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 6. Modals Logic (자료실, 공지사항, 임직원 전용)
-    const setupModal = (btnId, modalId, closeBtnId) => {
-        const btn = document.getElementById(btnId);
-        const modal = document.getElementById(modalId);
-        
-        if (!btn || !modal) return;
-        
-        const closeBtn = modal.querySelector(`#${closeBtnId}`) || modal.querySelector('.ref-modal-close');
-        const overlay = modal.querySelector('.ref-modal-overlay');
+    // 6. Reference Modal Logic
+    const refBtn = document.getElementById('btn-reference');
+    const refModal = document.getElementById('ref-modal');
+    const refModalClose = document.getElementById('ref-modal-close');
+    const refModalOverlay = document.querySelector('.ref-modal-overlay');
 
+    if (refBtn && refModal) {
         // Open modal
-        btn.addEventListener('click', (e) => {
+        refBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            refModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
         });
 
         // Close modal
-        const closeModal = () => {
-            modal.classList.remove('active');
+        const closeRefModal = () => {
+            refModal.classList.remove('active');
             document.body.style.overflow = '';
         };
 
-        if (closeBtn) closeBtn.addEventListener('click', closeModal);
-        if (overlay) overlay.addEventListener('click', closeModal);
+        if (refModalClose) refModalClose.addEventListener('click', closeRefModal);
+        if (refModalOverlay) refModalOverlay.addEventListener('click', closeRefModal);
         
         // Close on Escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                closeModal();
+            if (e.key === 'Escape' && refModal.classList.contains('active')) {
+                closeRefModal();
             }
-        });
-    };
-
-    // Initialize all modals
-    setupModal('btn-reference', 'ref-modal', 'ref-modal-close');
-    setupModal('btn-notice', 'notice-modal', 'notice-modal-close');
-    setupModal('btn-employee', 'employee-modal', 'employee-modal-close');
-
-    // 7. Employee Login Form Logic (Mock)
-    const employeeLoginForm = document.getElementById('employee-login-form');
-    if (employeeLoginForm) {
-        employeeLoginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const empId = document.getElementById('emp-id').value;
-            const empPw = document.getElementById('emp-pw').value;
-            
-            // 실제 서버 연결 전 임시 처리
-            alert('현재 사내망 외부에서는 접속할 수 없습니다.\n입력하신 사원번호: ' + empId);
-            employeeLoginForm.reset();
         });
     }
 });

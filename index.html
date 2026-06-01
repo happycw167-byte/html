@@ -315,10 +315,9 @@
                     <div class="mt-4 p-4 bg-light" style="border-radius: 8px; padding: 25px;">
                         <h4 class="mb-3">자료실 & 공지사항</h4>
                         <p class="text-muted mb-3">제품 카탈로그, 도면, 인증서 사본 등 다양한 자료를 확인하실 수 있습니다.</p>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <div style="display: flex; gap: 10px;">
                             <a href="javascript:void(0)" id="btn-reference" class="btn btn-primary btn-sm">자료실 바로가기</a>
-                            <a href="javascript:void(0)" id="btn-notice" class="btn btn-outline btn-sm" style="border-color: var(--primary-blue); color: var(--primary-blue);">공지사항</a>
-                            <a href="javascript:void(0)" id="btn-employee" class="btn btn-outline btn-sm" style="border-color: var(--text-muted); color: var(--text-muted);">임직원 전용</a>
+                            <a href="#" class="btn btn-outline btn-sm" style="border-color: var(--primary-blue); color: var(--primary-blue);">사내 공지사항</a>
                         </div>
                     </div>
                 </div>
@@ -440,89 +439,7 @@
         </div>
     </div>
 
-    <!-- Notice Modal -->
-    <div id="notice-modal" class="ref-modal notice-modal-wrapper">
-        <div class="ref-modal-overlay"></div>
-        <div class="ref-modal-content">
-            <div class="ref-modal-header">
-                <h3><i class="ph-fill ph-bell-ringing"></i> 공지사항</h3>
-                <button id="notice-modal-close" class="ref-modal-close" aria-label="닫기">
-                    <i class="ph ph-x"></i>
-                </button>
-            </div>
-            <div class="ref-modal-body">
-                <table class="notice-board">
-                    <thead>
-                        <tr>
-                            <th width="10%">번호</th>
-                            <th width="50%">제목</th>
-                            <th width="20%">작성자</th>
-                            <th width="20%">작성일</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>4</td>
-                            <td class="text-left"><a href="#">[공지] 비에이텍 2026년 하계 휴가 안내</a></td>
-                            <td>관리부</td>
-                            <td>2026.05.20</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td class="text-left"><a href="#">[안내] 신형 슬러지 펌프 출시 관련 세미나 안내</a></td>
-                            <td>생산부</td>
-                            <td>2026.04.15</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td class="text-left"><a href="#">[공지] 시스템 서버 점검 안내 (새벽 2시~4시)</a></td>
-                            <td>관리부</td>
-                            <td>2026.03.01</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="text-left"><a href="#">[필독] 2026년 안전보건관리 지침 개정 사항</a></td>
-                            <td>품질보증부</td>
-                            <td>2026.01.10</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- Pagination (UI Only) -->
-                <div class="pagination">
-                    <a href="#" class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Employee Login Modal -->
-    <div id="employee-modal" class="ref-modal employee-modal-wrapper">
-        <div class="ref-modal-overlay"></div>
-        <div class="ref-modal-content employee-login-content">
-            <div class="ref-modal-header">
-                <h3><i class="ph-fill ph-lock-key"></i> 임직원 전용 로그인</h3>
-                <button id="employee-modal-close" class="ref-modal-close" aria-label="닫기">
-                    <i class="ph ph-x"></i>
-                </button>
-            </div>
-            <div class="ref-modal-body login-body">
-                <p class="login-desc text-muted mb-4 text-center">비에이텍 임직원 전용 시스템입니다.<br>사원번호와 비밀번호를 입력해주세요.</p>
-                <form id="employee-login-form">
-                    <div class="form-group">
-                        <label for="emp-id">사원번호 (ID)</label>
-                        <input type="text" id="emp-id" required placeholder="예: 2026001">
-                    </div>
-                    <div class="form-group mb-4">
-                        <label for="emp-pw">비밀번호</label>
-                        <input type="password" id="emp-pw" required placeholder="비밀번호를 입력하세요">
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">로그인</button>
-                </form>
-            </div>
-        </div>
-    </div>
 
     <!-- AI Chatbot Widget -->
     <div id="ai-chat-widget" class="ai-chat-widget">
