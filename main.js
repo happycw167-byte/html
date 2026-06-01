@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(contactForm);
             
             // 사용자님의 구글 앱스 스크립트 웹앱 주소
-            const scriptURL = 'https://script.google.com/macros/s/happycw167@gmail.com/exec';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwRtqq3Pc86Hms9SqiYz_kY7igEJXBkn0OBCQJ_S3BmVkyLc-hw3Lo1JyDaIN0g-_KCoQ/exec';
 
             // CORS 문제 방지를 위해 mode: 'no-cors' 사용
             fetch(scriptURL, { 
