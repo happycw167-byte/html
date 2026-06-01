@@ -80,51 +80,41 @@ document.addEventListener('DOMContentLoaded', () => {
         fadeObserver.observe(element);
     });
 
-    // 4. Contact Form Submission (Gmail 웹 연동 방식)
+    // 4. Contact Form Submission (Google Apps Script API)
     const contactForm = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
     
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // 폼 새로고침 방지
+            e.preventDefault(); // 기본 새로고침 방지
             
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="ph-bold ph-check"></i> Gmail 창이 열립니다...';
             
-            // 폼 데이터 수집
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const type = document.getElementById('type').value;
-            const message = document.getElementById('message').value;
+            submitBtn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> 전송 중...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(contactForm);
             
-            const typeMap = {
-                quote: '견적 요청',
-                tech: '기술 상담',
-                as: '유지보수 및 A/S',
-                other: '기타 문의'
-            };
-            const typeText = typeMap[type] || '기타 문의';
-            
-            // 이메일 내용 인코딩
-            const subject = encodeURIComponent('[비에이텍 웹사이트] 새로운 문의가 접수되었습니다.');
-            const body = encodeURIComponent(
-                `■ 고객명 / 회사명: ${name}\n` +
-                `■ 연락처: ${phone}\n` +
-                `■ 문의 유형: ${typeText}\n\n` +
-                `■ 문의 내용:\n${message}\n`
-            );
-            
-            // 데스크탑 및 모바일 브라우저에서 모두 작동하는 Gmail 작성창 URL
-            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=happycw167@gmail.com&su=${subject}&body=${body}`;
-            
-            // 새 탭에서 Gmail 작성창 열기
-            window.open(gmailUrl, '_blank');
-            
-            // 3초 후 버튼 원래대로 복구하고 폼 초기화
-            setTimeout(() => {
+            // 사용자님의 구글 앱스 스크립트 웹앱 주소
+            const scriptURL = 'https://script.google.com/macros/s/.../exec';
+
+            // CORS 문제 방지를 위해 mode: 'no-cors' 사용
+            fetch(scriptURL, { 
+                method: 'POST', 
+                body: formData, 
+                mode: 'no-cors' 
+            })
+            .then(() => {
+                contactForm.style.display = 'none';
+                if (formSuccess) formSuccess.style.display = 'flex';
+            })
+            .catch(error => {
+                console.error('Error!', error);
+                alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
                 submitBtn.innerHTML = originalText;
-                contactForm.reset();
-            }, 3000);
+                submitBtn.disabled = false;
+            });
         });
     }
 
