@@ -88,22 +88,34 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // 폼 유효성 검사 (HTML5 required 속성으로 기본 처리됨)
-            
-            // 시뮬레이션: 제출 버튼 상태 변경
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> 전송 중...';
             submitBtn.disabled = true;
 
-            // 가상의 비동기 전송 대기 (1.5초)
-            setTimeout(() => {
+            // 폼 데이터 가져오기
+            const formData = new FormData(contactForm);
+            
+            // FormSubmit API를 사용한 이메일 전송 (AJAX 방식)
+            fetch("https://formsubmit.co/ajax/happycw1004@naver.com", {
+                method: "POST",
+                headers: { 
+                    'Accept': 'application/json'
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
                 // 성공 메시지 표시
                 contactForm.style.display = 'none';
                 formSuccess.style.display = 'flex';
-                
-                // 선택적: 백엔드 연동을 위해서는 여기서 fetch API 등을 사용
-            }, 1500);
+            })
+            .catch(error => {
+                console.error(error);
+                alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
         });
     }
 
