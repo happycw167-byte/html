@@ -323,6 +323,8 @@ window.openPdfModal = function(pdfUrl) {
         if (title) title.innerText = filename;
         
         iframe.src = pdfUrl;
+        const downloadBtn = document.getElementById('pdf-download-btn');
+        if(downloadBtn) downloadBtn.href = pdfUrl;
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
