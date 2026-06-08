@@ -425,7 +425,13 @@ function renderBoard() {
     sortedData.forEach(item => {
         const tr = document.createElement('tr');
         tr.className = 'board-row';
-        tr.onclick = () => openBoardDetail(item.id);
+        tr.onclick = () => {
+            if (isSelectMode) {
+                openDeleteConfirm(item.id);
+            } else {
+                openBoardDetail(item.id);
+            }
+        };
         
         tr.innerHTML = `
             <td>${item.id}</td>
@@ -522,7 +528,7 @@ function closeBoardDetail() {
 
 document.addEventListener('DOMContentLoaded', () => {
     // Add overlay click events for board
-    const overlays = ['board-list-modal-overlay', 'board-create-modal-overlay', 'board-detail-modal-overlay'];
+    const overlays = ['board-list-modal-overlay', 'board-create-modal-overlay', 'board-detail-modal-overlay', 'board-delete-modal-overlay'];
     overlays.forEach(id => {
         const el = document.getElementById(id);
         if(el) {
@@ -531,8 +537,58 @@ document.addEventListener('DOMContentLoaded', () => {
                     if(id === 'board-list-modal-overlay') closeBoardList();
                     if(id === 'board-create-modal-overlay') closeBoardCreate();
                     if(id === 'board-detail-modal-overlay') closeBoardDetail();
+                    if(id === 'board-delete-modal-overlay') closeDeleteConfirm();
                 }
             });
         }
     });
 });
+
+
+let isSelectMode = false;
+let deleteTargetId = null;
+
+function toggleSelectMode() {
+    isSelectMode = !isSelectMode;
+    const btn = document.getElementById('btn-board-select-mode');
+    
+    if (isSelectMode) {
+        btn.innerText = '취소';
+        btn.style.background = '#dc3545'; // red to indicate delete mode
+        btn.style.borderColor = '#dc3545';
+        document.getElementById('board-list-body').style.cursor = 'crosshair';
+        alert("선택 모드가 켜졌습니다. 삭제할 공지사항을 클릭해주세요.");
+    } else {
+        btn.innerText = '선택';
+        btn.style.background = 'rgba(255,255,255,0.2)';
+        btn.style.borderColor = 'rgba(255,255,255,0.5)';
+        document.getElementById('board-list-body').style.cursor = 'default';
+    }
+}
+
+// We need to overwrite renderBoard() to handle isSelectMode
+// Since we appended renderBoard() earlier, we can just redefine it (or replace the string in the file).
+// It's safer to read and replace the old renderBoard function in main.js.
+
+
+function openDeleteConfirm(id) {
+    deleteTargetId = id;
+    document.getElementById('board-delete-modal-overlay').style.display = 'flex';
+}
+
+function closeDeleteConfirm() {
+    deleteTargetId = null;
+    document.getElementById('board-delete-modal-overlay').style.display = 'none';
+}
+
+function confirmDeleteBoard() {
+    if (deleteTargetId !== null) {
+        boardData = boardData.filter(item => item.id !== deleteTargetId);
+        localStorage.setItem('boardData', JSON.stringify(boardData));
+        closeDeleteConfirm();
+        renderBoard();
+        
+        // Disable select mode after deletion for safety
+        if(isSelectMode) toggleSelectMode();
+    }
+}

@@ -856,7 +856,12 @@
         <div id="board-list-modal" style="background:#fff; width:90%; max-width:800px; height:80vh; max-height:600px; border-radius:12px; overflow:hidden; box-shadow:0 15px 30px rgba(0,0,0,0.2); display:flex; flex-direction:column; position:relative;">
             <div style="background:var(--primary-blue); color:#fff; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; flex-shrink:0;">
                 <h4 style="margin:0; font-size:1.2rem; color:#fff;"><i class="ph-fill ph-megaphone"></i> 사내 공지사항</h4>
-                <button onclick="closeBoardList()" style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:#fff;">&times;</button>
+                
+                <div>
+                    <button id="btn-board-select-mode" onclick="toggleSelectMode()" style="background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.5); font-size:0.9rem; cursor:pointer; color:#fff; padding:4px 10px; border-radius:4px; margin-right:15px; font-weight:bold;">선택</button>
+                    <button onclick="closeBoardList()" style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:#fff;">&times;</button>
+                </div>
+
             </div>
             <div style="padding: 20px; overflow-y: auto; flex-grow:1;">
                 <table class="table table-hover text-center" style="margin:0;">
@@ -928,6 +933,24 @@
                 
                 <div style="text-align:center; margin-top:30px;">
                     <button onclick="closeBoardDetail()" class="btn btn-primary">목록으로</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 게시물 삭제 확인 모달 -->
+    <div id="board-delete-modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:2500; align-items:center; justify-content:center;">
+        <div id="board-delete-modal" style="background:#fff; width:90%; max-width:350px; border-radius:12px; overflow:hidden; box-shadow:0 15px 30px rgba(0,0,0,0.2); text-align:center;">
+            <div style="background:var(--primary-blue); color:#fff; padding:15px; font-weight:bold;">
+                알림
+            </div>
+            <div style="padding: 30px 20px;">
+                <h4 style="margin-bottom: 20px; color:#333; font-weight:bold;">삭제</h4>
+                <p style="color:#666; margin-bottom:30px; font-size:0.9rem;">해당 공지사항을 삭제하시겠습니까?</p>
+                <div style="display:flex; justify-content:center; gap:10px;">
+                    <button onclick="closeDeleteConfirm()" class="btn btn-secondary" style="padding: 8px 25px;">취소</button>
+                    <button onclick="confirmDeleteBoard()" class="btn btn-danger" style="padding: 8px 25px;">예</button>
                 </div>
             </div>
         </div>
