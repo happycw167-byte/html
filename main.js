@@ -339,3 +339,47 @@ window.closePdfModal = function() {
         if (iframe) iframe.src = '';
     }
 };
+
+// 사내 시스템 패스워드 모달
+function openPwModal() {
+    document.getElementById('pw-modal-overlay').style.display = 'flex';
+    document.getElementById('system-pw-input').value = '';
+    document.getElementById('pw-error-msg').style.display = 'none';
+    document.getElementById('system-pw-input').focus();
+}
+
+function closePwModal() {
+    document.getElementById('pw-modal-overlay').style.display = 'none';
+}
+
+function checkPassword() {
+    const pwInput = document.getElementById('system-pw-input').value;
+    const errorMsg = document.getElementById('pw-error-msg');
+    
+    if (pwInput === 'ba12') {
+        closePwModal();
+        openInternalModal();
+    } else {
+        errorMsg.style.display = 'block';
+    }
+}
+
+function openInternalModal() {
+    document.getElementById('internal-modal-overlay').style.display = 'flex';
+}
+
+function closeInternalModal() {
+    document.getElementById('internal-modal-overlay').style.display = 'none';
+}
+
+// 오버레이 클릭 시 닫기 기능 추가 (옵션)
+window.addEventListener('click', function(event) {
+    const pwOverlay = document.getElementById('pw-modal-overlay');
+    const internalOverlay = document.getElementById('internal-modal-overlay');
+    if (event.target === pwOverlay) {
+        closePwModal();
+    }
+    if (event.target === internalOverlay) {
+        closeInternalModal();
+    }
+});
