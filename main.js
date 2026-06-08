@@ -339,3 +339,28 @@ window.closePdfModal = function() {
         if (iframe) iframe.src = '';
     }
 };
+
+    // 장비 및 시설 더보기/접기 토글
+    const btnToggleEq = document.getElementById('btn-toggle-equipment');
+    if (btnToggleEq) {
+        btnToggleEq.addEventListener('click', function() {
+            const hiddenItems = document.querySelectorAll('.hidden-equipment');
+            const isHidden = hiddenItems[0].style.display !== 'block';
+
+            if (isHidden) {
+                // 더보기
+                hiddenItems.forEach(item => item.style.display = 'block');
+                btnToggleEq.innerHTML = '접기 (▲)';
+            } else {
+                // 접기
+                hiddenItems.forEach(item => item.style.display = '');
+                btnToggleEq.innerHTML = '더보기 (▼)';
+                
+                // 접을 때 섹션 위로 스크롤 (선택적)
+                const eqSection = document.getElementById('equipment');
+                if (eqSection) {
+                    eqSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    }
