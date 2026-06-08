@@ -394,3 +394,145 @@ function openAddressBook() {
 function closeAddressBook() {
     document.getElementById('address-modal-overlay').style.display = 'none';
 }
+
+// --- 사내 공지사항 게시판 로직 ---
+
+let boardData = JSON.parse(localStorage.getItem('boardData')) || [
+    {
+        id: 1,
+        title: "신규 사내 시스템 오픈 안내",
+        content: "임직원 여러분,\n금일부터 신규 사내 시스템이 오픈되었습니다.\n게시판과 주소록 기능을 적극 활용해주시기 바랍니다.\n\n감사합니다.",
+        author: "관리자",
+        date: "2026-06-09",
+        fileName: ""
+    }
+];
+
+function renderBoard() {
+    const tbody = document.getElementById('board-list-body');
+    if(!tbody) return;
+    
+    tbody.innerHTML = '';
+    
+    // Sort by id descending (newest first)
+    const sortedData = [...boardData].sort((a, b) => b.id - a.id);
+    
+    if(sortedData.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" style="padding:30px; color:#999;">등록된 공지사항이 없습니다.</td></tr>';
+        return;
+    }
+    
+    sortedData.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = 'board-row';
+        tr.onclick = () => openBoardDetail(item.id);
+        
+        tr.innerHTML = `
+            <td>${item.id}</td>
+            <td style="text-align:left; padding-left:20px; font-weight:500;">${item.title} ${item.fileName ? '<i class="ph-fill ph-paperclip text-muted" style="font-size:0.9rem;"></i>' : ''}</td>
+            <td>${item.author}</td>
+            <td>${item.date}</td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+function openBoardList() {
+    renderBoard();
+    document.getElementById('board-list-modal-overlay').style.display = 'flex';
+}
+
+function closeBoardList() {
+    document.getElementById('board-list-modal-overlay').style.display = 'none';
+}
+
+function openBoardCreate() {
+    document.getElementById('board-title-input').value = '';
+    document.getElementById('board-content-input').value = '';
+    document.getElementById('board-file-input').value = '';
+    document.getElementById('board-create-modal-overlay').style.display = 'flex';
+}
+
+function closeBoardCreate() {
+    document.getElementById('board-create-modal-overlay').style.display = 'none';
+}
+
+function submitBoard() {
+    const title = document.getElementById('board-title-input').value.trim();
+    const content = document.getElementById('board-content-input').value.trim();
+    const fileInput = document.getElementById('board-file-input');
+    
+    if(!title || !content) {
+        alert("제목과 내용을 모두 입력해주세요.");
+        return;
+    }
+    
+    let fileName = "";
+    if(fileInput.files.length > 0) {
+        fileName = fileInput.files[0].name;
+    }
+    
+    const today = new Date();
+    const dateStr = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
+    
+    const newId = boardData.length > 0 ? Math.max(...boardData.map(d => d.id)) + 1 : 1;
+    
+    const newItem = {
+        id: newId,
+        title: title,
+        content: content,
+        author: "임직원",
+        date: dateStr,
+        fileName: fileName
+    };
+    
+    boardData.push(newItem);
+    localStorage.setItem('boardData', JSON.stringify(boardData));
+    
+    closeBoardCreate();
+    renderBoard();
+}
+
+function openBoardDetail(id) {
+    const item = boardData.find(d => d.id === id);
+    if(!item) return;
+    
+    document.getElementById('detail-title').innerText = item.title;
+    document.getElementById('detail-author').innerText = item.author;
+    document.getElementById('detail-date').innerText = item.date;
+    document.getElementById('detail-content').innerText = item.content;
+    
+    const fileArea = document.getElementById('detail-file-area');
+    const fileNameSpan = document.getElementById('detail-file-name');
+    
+    if(item.fileName) {
+        fileArea.style.display = 'block';
+        fileNameSpan.innerText = item.fileName;
+        fileNameSpan.onclick = () => alert("가상 첨부파일 다운로드 시뮬레이션입니다.");
+    } else {
+        fileArea.style.display = 'none';
+    }
+    
+    document.getElementById('board-detail-modal-overlay').style.display = 'flex';
+}
+
+function closeBoardDetail() {
+    document.getElementById('board-detail-modal-overlay').style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Add overlay click events for board
+    const overlays = ['board-list-modal-overlay', 'board-create-modal-overlay', 'board-detail-modal-overlay'];
+    overlays.forEach(id => {
+        const el = document.getElementById(id);
+        if(el) {
+            el.addEventListener('click', (e) => {
+                if(e.target.id === id) {
+                    if(id === 'board-list-modal-overlay') closeBoardList();
+                    if(id === 'board-create-modal-overlay') closeBoardCreate();
+                    if(id === 'board-detail-modal-overlay') closeBoardDetail();
+                }
+            });
+        }
+    });
+});
