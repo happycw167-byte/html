@@ -25,7 +25,7 @@
     <header class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="#home" class="logo">
-                <i class="ph-fill ph-drop"></i> BEATECH
+                <img src="company_logo.jpeg" alt="로고" style="height:30px; margin-right:8px;"> 비에이텍(주)
             </a>
             
             <button class="mobile-toggle" id="mobile-toggle" aria-label="메뉴 열기">
@@ -183,7 +183,8 @@
                                     <div class="timeline-item">
                                         <div class="timeline-year">2019</div>
                                         <div class="timeline-content">김화하수처리구역(와수3처리분구) 하수관거정비사업 수중볼텍스펌프 (철원군상하수도사업소)</div>
-                                    </div>
+    
+                                </div>
                                     <div class="timeline-item">
                                         <div class="timeline-year">2019</div>
                                         <div class="timeline-content">농업용수(양덕원리 취수펌프) 배수관로 설치공사 진공펌프 (홍천군)</div>
@@ -200,51 +201,52 @@
                                         <div class="timeline-year">2019</div>
                                         <div class="timeline-content">본관기계실 노후펌프 교체공사 (강원도인재개발원)</div>
                                     </div>
-                                    <div class="timeline-item">
+                                    <div class="timeline-item hidden-achievement">
                                         <div class="timeline-year">2019</div>
                                         <div class="timeline-content">읍상빗물펌프장 펌프 수리수선 (삼척시하수도사업소)</div>
                                     </div>
-                                    <div class="timeline-item">
+                                    <div class="timeline-item hidden-achievement">
                                         <div class="timeline-year">2019</div>
                                         <div class="timeline-content">만경보 수중펌프 교체공사 관급자재(수중펌프) 구매 (철원군농업기술센터)</div>
                                     </div>
-                                    <div class="timeline-item">
+                                    <div class="timeline-item hidden-achievement">
                                         <div class="timeline-year">2019</div>
                                         <div class="timeline-content">홍천종합운동장 수영장 열교환기 펌프 및 인버터 교체 (홍천군시설관리사업소)</div>
                                     </div>
-                                    <div class="timeline-item">
+                                    <div class="timeline-item hidden-achievement">
                                         <div class="timeline-year">2019</div>
                                         <div class="timeline-content">홍천문화예술회관 외 1개소 저수조 배수펌프 교체공사 (홍천군시설관리사업소)</div>
                                     </div>
-                                    <div class="timeline-item">
+                                    <div class="timeline-item hidden-achievement">
                                         <div class="timeline-year">2019</div>
                                         <div class="timeline-content">상수도시설(가압장) 확충공사 관급자재(부스터펌프) 구매 (춘천시상하수도사업본부)</div>
                                     </div>
-                                    <div class="timeline-item">
+                                    <div class="timeline-item hidden-achievement">
                                         <div class="timeline-year">2019</div>
                                         <div class="timeline-content">북방배수지 송수펌프 교체 (홍천군)</div>
                                     </div>
-                                    <div class="timeline-item">
+                                    <div class="timeline-item hidden-achievement">
                                         <div class="timeline-year">2019</div>
                                         <div class="timeline-content">하수도시설 보수 및 개선공사(지방하천-홍천강지구) 수중펌프 (홍천군)</div>
                                     </div>
-                                    <div class="timeline-item">
+                                    <div class="timeline-item hidden-achievement">
                                         <div class="timeline-year">2019</div>
                                         <div class="timeline-content">강현가압장 가압시설 증설공사 관급자재(부스터펌프) (양양군상하수도사업소)</div>
                                     </div>
-                                    <div class="timeline-item">
+                                    <div class="timeline-item hidden-achievement">
                                         <div class="timeline-year">2019</div>
                                         <div class="timeline-content">평창군 대화면 하수관로 정비사업 관급자재(수중볼텍스펌프) (평창군상하수도사업소)</div>
                                     </div>
-                                    <div class="timeline-item">
+                                    <div class="timeline-item hidden-achievement">
                                         <div class="timeline-year">2019</div>
                                         <div class="timeline-content">평창군 진부면 하수관로 정비사업 관급자재(수중볼텍스펌프) (평창군상하수도사업소)</div>
                                     </div>
-                                    <div class="timeline-item">
+                                    <div class="timeline-item hidden-achievement">
                                         <div class="timeline-year">2019</div>
                                         <div class="timeline-content">철원군 화지리(2,3처리분구) 하수관거정비사업 수중볼텍스펌프 (철원군상하수도사업소)</div>
                                     </div>
                                 </div>
+                                <div class="text-center mt-3"><button id="btn-toggle-achievements" class="btn btn-outline btn-sm" style="border-color:var(--primary-blue); color:var(--primary-blue);">더보기 (▼)</button></div>
                             </div>
                         </div>
                     </div>
@@ -472,7 +474,7 @@
             <div class="reference-list mt-5 fade-up">
                 <div class="row">
                     <div class="col-md-6 mb-4">
-                        <a href="./부스터펌프 유지관리지침서.pdf" target="_blank" class="card shadow-sm text-decoration-none">
+                        <a href="javascript:void(0)" onclick="openPdfModal('./부스터펌프 유지관리지침서.pdf')" class="card shadow-sm text-decoration-none">
                             <div class="card-body d-flex align-items-center">
                                 <i class="ph-fill ph-file-pdf text-danger" style="font-size: 2.5rem; margin-right: 15px;"></i>
                                 <div>
@@ -483,7 +485,7 @@
                         </a>
                     </div>
                     <div class="col-md-6 mb-4">
-                        <a href="./수중펌프 유지관리지침서.pdf" target="_blank" class="card shadow-sm text-decoration-none">
+                        <a href="javascript:void(0)" onclick="openPdfModal('./수중펌프 유지관리지침서.pdf')" class="card shadow-sm text-decoration-none">
                             <div class="card-body d-flex align-items-center">
                                 <i class="ph-fill ph-file-pdf text-danger" style="font-size: 2.5rem; margin-right: 15px;"></i>
                                 <div>
@@ -494,7 +496,7 @@
                         </a>
                     </div>
                     <div class="col-md-6 mb-4">
-                        <a href="./슬러지펌프 유지관리지침서.pdf" target="_blank" class="card shadow-sm text-decoration-none">
+                        <a href="javascript:void(0)" onclick="openPdfModal('./슬러지펌프 유지관리지침서.pdf')" class="card shadow-sm text-decoration-none">
                             <div class="card-body d-flex align-items-center">
                                 <i class="ph-fill ph-file-pdf text-danger" style="font-size: 2.5rem; margin-right: 15px;"></i>
                                 <div>
@@ -505,7 +507,7 @@
                         </a>
                     </div>
                     <div class="col-md-6 mb-4">
-                        <a href="./일축나사식 모노펌프 유지관리지침서.pdf" target="_blank" class="card shadow-sm text-decoration-none">
+                        <a href="javascript:void(0)" onclick="openPdfModal('./일축나사식 모노펌프 유지관리지침서.pdf')" class="card shadow-sm text-decoration-none">
                             <div class="card-body d-flex align-items-center">
                                 <i class="ph-fill ph-file-pdf text-danger" style="font-size: 2.5rem; margin-right: 15px;"></i>
                                 <div>
@@ -516,7 +518,7 @@
                         </a>
                     </div>
                     <div class="col-md-6 mb-4">
-                        <a href="./정량펌프 유지관리지침서.pdf" target="_blank" class="card shadow-sm text-decoration-none">
+                        <a href="javascript:void(0)" onclick="openPdfModal('./정량펌프 유지관리지침서.pdf')" class="card shadow-sm text-decoration-none">
                             <div class="card-body d-flex align-items-center">
                                 <i class="ph-fill ph-file-pdf text-danger" style="font-size: 2.5rem; margin-right: 15px;"></i>
                                 <div>
@@ -527,7 +529,7 @@
                         </a>
                     </div>
                     <div class="col-md-6 mb-4">
-                        <a href="./편흡입볼류트펌프 유지관리지침서.pdf" target="_blank" class="card shadow-sm text-decoration-none">
+                        <a href="javascript:void(0)" onclick="openPdfModal('./편흡입볼류트펌프 유지관리지침서.pdf')" class="card shadow-sm text-decoration-none">
                             <div class="card-body d-flex align-items-center">
                                 <i class="ph-fill ph-file-pdf text-danger" style="font-size: 2.5rem; margin-right: 15px;"></i>
                                 <div>
@@ -653,7 +655,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <i class="ph-fill ph-drop"></i> BEATECH
+                    <img src="company_logo.jpeg" alt="로고" style="height:30px; margin-right:8px;"> 비에이텍(주)
                 </div>
                 <div class="footer-info">
                     <p>상호명: (주)비에이텍 | 대표이사: 조세연</p>
@@ -771,6 +773,21 @@
                 <i class="ph ph-x"></i>
             </button>
             <img id="cert-modal-img" src="" alt="인증서 확대 이미지">
+        </div>
+    </div>
+
+
+    <!-- PDF Viewer Modal -->
+    <div id="pdf-modal" class="cert-modal-wrapper">
+        <div class="cert-modal-overlay" onclick="closePdfModal()"></div>
+        <div class="pdf-modal-content" style="position:relative; width:90%; height:90vh; max-width:1200px; z-index:10001; background:white; border-radius:8px; overflow:hidden;">
+            <button class="cert-modal-close" onclick="closePdfModal()" aria-label="닫기" style="position:absolute; top:10px; right:15px; color:#333; z-index:10002;">
+                <i class="ph ph-x"></i>
+            </button>
+            <div style="background:#f8f9fa; padding:15px; border-bottom:1px solid #ddd;">
+                <h4 id="pdf-modal-title" style="margin:0; font-size:1.2rem; color:var(--primary-blue);">문서 뷰어</h4>
+            </div>
+            <iframe id="pdf-modal-iframe" src="" style="width:100%; height:calc(100% - 60px); border:none;"></iframe>
         </div>
     </div>
 

@@ -1508,3 +1508,8 @@ h1, h2, h3, h4, h5, h6 {
 .cert-modal-close:hover {
     color: var(--accent-blue);
 }
+
+/* Hidden Achievement Toggle */
+.hidden-achievement {
+    display: none;
+}

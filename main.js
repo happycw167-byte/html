@@ -280,3 +280,60 @@ document.addEventListener('keydown', (e) => {
         window.closeCertModal();
     }
 });
+
+// Achievement Toggle Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const btnToggle = document.getElementById('btn-toggle-achievements');
+    if (btnToggle) {
+        btnToggle.addEventListener('click', () => {
+            const hiddenItems = document.querySelectorAll('.timeline-item.hidden-achievement, .timeline-item.shown-achievement');
+            let isShowingAll = btnToggle.innerText.includes('접기');
+            
+            if (isShowingAll) {
+                // Hide them
+                hiddenItems.forEach(item => {
+                    item.classList.remove('shown-achievement');
+                    item.classList.add('hidden-achievement');
+                    item.style.display = 'none';
+                });
+                btnToggle.innerText = '더보기 (▼)';
+            } else {
+                // Show them
+                hiddenItems.forEach(item => {
+                    item.classList.remove('hidden-achievement');
+                    item.classList.add('shown-achievement');
+                    item.style.display = 'block';
+                });
+                btnToggle.innerText = '접기 (▲)';
+            }
+        });
+    }
+});
+
+// PDF Modal Logic
+window.openPdfModal = function(pdfUrl) {
+    const modal = document.getElementById('pdf-modal');
+    const iframe = document.getElementById('pdf-modal-iframe');
+    const title = document.getElementById('pdf-modal-title');
+    
+    if (modal && iframe) {
+        // extract filename for title
+        let filename = pdfUrl.split('/').pop().replace('.pdf', '');
+        filename = decodeURIComponent(filename);
+        if (title) title.innerText = filename;
+        
+        iframe.src = pdfUrl;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+};
+
+window.closePdfModal = function() {
+    const modal = document.getElementById('pdf-modal');
+    const iframe = document.getElementById('pdf-modal-iframe');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        if (iframe) iframe.src = '';
+    }
+};
