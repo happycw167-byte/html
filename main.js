@@ -382,4 +382,15 @@ window.addEventListener('click', function(event) {
     if (event.target === internalOverlay) {
         closeInternalModal();
     }
+    const addressOverlay = document.getElementById('address-modal-overlay');
+    if (event.target === addressOverlay) {
+        closeAddressBook();
+    }
 });
+
+function openAddressBook() {
+    document.getElementById('address-modal-overlay').style.display = 'flex';
+}
+function closeAddressBook() {
+    document.getElementById('address-modal-overlay').style.display = 'none';
+}
