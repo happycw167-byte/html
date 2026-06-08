@@ -1513,3 +1513,19 @@ h1, h2, h3, h4, h5, h6 {
 .hidden-achievement {
     display: none;
 }
+
+/* Checkerboard Grid for Reference */
+.checkerboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+.checkerboard-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.checkerboard-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
