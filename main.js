@@ -255,3 +255,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Certificate Modal Global Functions
+window.openCertModal = function(imgSrc) {
+    const modal = document.getElementById('cert-modal');
+    const modalImg = document.getElementById('cert-modal-img');
+    if (modal && modalImg) {
+        modalImg.src = imgSrc;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+};
+
+window.closeCertModal = function() {
+    const modal = document.getElementById('cert-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+};
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        window.closeCertModal();
+    }
+});
