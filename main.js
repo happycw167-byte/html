@@ -528,7 +528,7 @@ function closeBoardDetail() {
 
 document.addEventListener('DOMContentLoaded', () => {
     // Add overlay click events for board
-    const overlays = ['board-list-modal-overlay', 'board-create-modal-overlay', 'board-detail-modal-overlay', 'board-delete-modal-overlay'];
+    const overlays = ['board-list-modal-overlay', 'board-create-modal-overlay', 'board-detail-modal-overlay', 'board-delete-modal-overlay', 'notebook-menu-modal-overlay', 'prompt-guide-modal-overlay'];
     overlays.forEach(id => {
         const el = document.getElementById(id);
         if(el) {
@@ -538,6 +538,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     if(id === 'board-create-modal-overlay') closeBoardCreate();
                     if(id === 'board-detail-modal-overlay') closeBoardDetail();
                     if(id === 'board-delete-modal-overlay') closeDeleteConfirm();
+                    if(id === 'notebook-menu-modal-overlay') closeNotebookMenu();
+                    if(id === 'prompt-guide-modal-overlay') closePromptGuide();
                 }
             });
         }
@@ -591,4 +593,23 @@ function confirmDeleteBoard() {
         // Disable select mode after deletion for safety
         if(isSelectMode) toggleSelectMode();
     }
+}
+
+
+function openNotebookMenu() {
+    document.getElementById('notebook-menu-modal-overlay').style.display = 'flex';
+}
+
+function closeNotebookMenu() {
+    document.getElementById('notebook-menu-modal-overlay').style.display = 'none';
+}
+
+function openPromptGuide() {
+    // 프롬프트 가이드 열 때 이전 메뉴 닫기
+    closeNotebookMenu();
+    document.getElementById('prompt-guide-modal-overlay').style.display = 'flex';
+}
+
+function closePromptGuide() {
+    document.getElementById('prompt-guide-modal-overlay').style.display = 'none';
 }
