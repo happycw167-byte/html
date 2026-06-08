@@ -1529,8 +1529,3 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
 }
-
-/* 장비 및 시설 숨김 처리 */
-.hidden-equipment {
-    display: none !important;
-}
