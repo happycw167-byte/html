@@ -613,3 +613,25 @@ function openPromptGuide() {
 function closePromptGuide() {
     document.getElementById('prompt-guide-modal-overlay').style.display = 'none';
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // --- 홍보영상 컨트롤 로직 ---
+    const promoVideo = document.getElementById('promo-video');
+    const btnPlay = document.getElementById('btn-video-play');
+    const btnPause = document.getElementById('btn-video-pause');
+
+    if (promoVideo && btnPlay && btnPause) {
+        btnPlay.addEventListener('click', () => {
+            promoVideo.play();
+            btnPlay.style.display = 'none';
+            btnPause.style.display = 'inline-block';
+        });
+
+        btnPause.addEventListener('click', () => {
+            promoVideo.pause();
+            btnPause.style.display = 'none';
+            btnPlay.style.display = 'inline-block';
+        });
+    }
+});
