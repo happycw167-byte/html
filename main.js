@@ -622,6 +622,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnPause = document.getElementById('btn-video-pause');
 
     if (promoVideo && btnPlay && btnPause) {
+
+        // 자동 재생 (화면에 보일 때)
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        promoVideo.play().then(() => {
+                            btnPlay.style.display = 'none';
+                            btnPause.style.display = 'inline-block';
+                        }).catch(e => console.log('Autoplay prevented:', e));
+                    } else {
+                        promoVideo.pause();
+                        btnPause.style.display = 'none';
+                        btnPlay.style.display = 'inline-block';
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(promoVideo);
+        }
+
         btnPlay.addEventListener('click', () => {
             promoVideo.play();
             btnPlay.style.display = 'none';

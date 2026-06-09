@@ -72,7 +72,7 @@
                 
                 <!-- 홍보 영상 -->
                 <div class="promo-video-container mb-4 fade-up" style="position: relative; width: 100%; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow-sm);">
-                    <video id="promo-video" src="promo_video.mp4" style="width: 100%; display: block;" muted autoplay loop playsinline></video>
+                    <video id="promo-video" src="promo_video.mp4" style="width: 100%; display: block;" muted loop playsinline></video>
                     
                     <!-- 커스텀 컨트롤 버튼 -->
                     <div style="position: absolute; bottom: 15px; right: 15px; display: flex; gap: 10px; z-index: 10;">
@@ -84,6 +84,7 @@
                         </button>
                     </div>
                 </div>
+                <p style="font-size: 0.8rem; color: #aaa; text-align: right; margin-top: 8px; margin-bottom: 0;">본 영상은 AI로 제작되었습니다.</p>
                 
                 <!-- CEO 인사말 -->
 
@@ -97,12 +98,13 @@
                         <span>대표이사</span> <strong>조세연</strong>
                     </div>
                 </div>
+            </div> <!-- End of about-grid -->
                 
-                <!-- 기업 개요 및 조직도 -->
-                <div class="fade-up">
+            <!-- 기업 개요 및 조직도 (중앙 정렬) -->
+            <div class="fade-up" style="max-width: 800px; margin: 80px auto 0 auto; text-align: center;">
                     <div class="company-overview mb-5">
                         <h3 class="mb-3">기업 개요</h3>
-                        <ul class="info-list" style="margin-top:0;">
+                        <ul class="info-list" style="margin-top:0; display: inline-block; text-align: left;">
                             <li>
                                 <i class="ph-fill ph-map-pin"></i>
                                 <div>
