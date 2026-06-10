@@ -260,8 +260,12 @@ document.addEventListener('DOMContentLoaded', () => {
 window.openCertModal = function(imgSrc) {
     const modal = document.getElementById('cert-modal');
     const modalImg = document.getElementById('cert-modal-img');
+    const downloadBtn = document.getElementById('cert-download-btn');
     if (modal && modalImg) {
         modalImg.src = imgSrc;
+        if (downloadBtn) {
+            downloadBtn.href = imgSrc;
+        }
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
