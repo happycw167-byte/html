@@ -655,3 +655,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+// 카드뉴스 슬라이더 기능
+let currentSlide = 0;
+window.moveSlide = function(direction) {
+    const track = document.getElementById('card-slider-track');
+    if (!track) return;
+    const totalSlides = 5;
+    currentSlide += direction;
+    if (currentSlide < 0) currentSlide = totalSlides - 1;
+    if (currentSlide >= totalSlides) currentSlide = 0;
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+};
