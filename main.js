@@ -96,6 +96,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const formData = new FormData(contactForm);
             
+            // 구글 스크립트에서 이메일 필드를 인식하지 못하는 현상을 방지하기 위해, 
+            // 메시지(message) 내용의 맨 앞에 이메일 주소를 명시적으로 추가합니다.
+            const emailVal = formData.get('email');
+            if (emailVal) {
+                const originalMsg = formData.get('message') || '';
+                formData.set('message', `[회신받을 이메일: ${emailVal}]\n\n${originalMsg}`);
+            }
+            
             // 사용자님의 구글 앱스 스크립트 웹앱 주소
             const scriptURL = 'https://script.google.com/macros/s/AKfycbwRtqq3Pc86Hms9SqiYz_kY7igEJXBkn0OBCQJ_S3BmVkyLc-hw3Lo1JyDaIN0g-_KCoQ/exec';
 
