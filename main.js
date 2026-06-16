@@ -157,7 +157,28 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    // 5. BGM Logic
+    const bgmAudio = document.getElementById('bgm-audio');
+    const bgmToggle = document.getElementById('bgm-toggle');
+    const bgmIcon = document.getElementById('bgm-icon');
 
+    if (bgmAudio && bgmToggle) {
+        // 볼륨 초기 세팅 (옵션)
+        bgmAudio.volume = 0.5;
+
+        bgmToggle.addEventListener('click', () => {
+            if (bgmAudio.paused) {
+                bgmAudio.play().then(() => {
+                    bgmIcon.classList.replace('ph-speaker-slash', 'ph-speaker-high');
+                    bgmToggle.style.backgroundColor = 'var(--secondary)'; // 재생 중일 때 색상 변경
+                }).catch(err => console.log("BGM Play Error:", err));
+            } else {
+                bgmAudio.pause();
+                bgmIcon.classList.replace('ph-speaker-high', 'ph-speaker-slash');
+                bgmToggle.style.backgroundColor = 'var(--primary)';
+            }
+        });
+    }
 
 
     // 6. Reference Modal Logic
