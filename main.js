@@ -170,12 +170,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (bgmAudio.paused) {
                 bgmAudio.play().then(() => {
                     bgmIcon.classList.replace('ph-speaker-slash', 'ph-speaker-high');
-                    bgmToggle.style.backgroundColor = 'var(--secondary)'; // 재생 중일 때 색상 변경
+                    bgmToggle.style.backgroundColor = '#003a80'; // 재생 중일 때 진한 파란색
                 }).catch(err => console.log("BGM Play Error:", err));
             } else {
                 bgmAudio.pause();
                 bgmIcon.classList.replace('ph-speaker-high', 'ph-speaker-slash');
-                bgmToggle.style.backgroundColor = 'var(--primary)';
+                bgmToggle.style.backgroundColor = 'var(--primary-blue, #0056b3)'; // 정지 시 원래 파란색
             }
         });
     }
