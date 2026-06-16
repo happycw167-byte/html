@@ -656,6 +656,10 @@
                             <input type="tel" id="phone" name="phone" required placeholder="010-0000-0000">
                         </div>
                         <div class="form-group">
+                            <label for="email">이메일</label>
+                            <input type="email" id="email" name="email" placeholder="example@email.com">
+                        </div>
+                        <div class="form-group">
                             <label for="type">문의 유형 <span class="required">*</span></label>
                             <div class="custom-select">
                                 <select id="type" name="type" required>
@@ -794,7 +798,72 @@
     </div>
 
     <!-- JS -->
+    <!-- 사내 캘린더 메인 모달 -->
+    <div id="calendar-modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:2100; align-items:center; justify-content:center;">
+        <div id="calendar-modal" style="background:#fff; width:95%; max-width:900px; border-radius:12px; overflow:hidden; box-shadow:0 15px 30px rgba(0,0,0,0.2); display:flex; flex-direction:column; max-height:90vh;">
+            <div style="background:#17a2b8; color:#fff; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; flex-shrink:0;">
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <button onclick="closeCalendarModal()" style="background:none; border:none; cursor:pointer; color:#fff;"><i class="ph ph-arrow-left" style="font-size:1.2rem;"></i></button>
+                    <h4 style="margin:0; font-size:1.2rem; color:#fff;"><i class="ph-fill ph-calendar-blank"></i> 사내 캘린더</h4>
+                </div>
+                <button onclick="closeCalendarModal()" style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:#fff;">&times;</button>
+            </div>
+            
+            <div style="padding: 20px; flex-grow:1; overflow-y:auto; display:flex; flex-direction:column;">
+                <!-- 캘린더 헤더 (연월 및 이동 버튼) -->
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                    <button class="btn btn-outline-secondary" onclick="changeMonth(-1)" style="padding:5px 15px;">&#10094; 이전달</button>
+                    <h5 id="calendar-title" style="margin:0; font-weight:700; font-size:1.5rem;">2026년 6월</h5>
+                    <button class="btn btn-outline-secondary" onclick="changeMonth(1)" style="padding:5px 15px;">다음달 &#10095;</button>
+                </div>
+                <!-- 캘린더 그리드 -->
+                <div class="calendar-grid">
+                    <div class="calendar-header-day text-danger">일</div>
+                    <div class="calendar-header-day">월</div>
+                    <div class="calendar-header-day">화</div>
+                    <div class="calendar-header-day">수</div>
+                    <div class="calendar-header-day">목</div>
+                    <div class="calendar-header-day">금</div>
+                    <div class="calendar-header-day text-primary">토</div>
+                    <!-- 요일들이 동적으로 생성될 영역 -->
+                </div>
+                <div class="calendar-body" id="calendar-body">
+                    <!-- 날짜들이 동적으로 생성될 영역 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 일정 추가/수정 팝업 모달 -->
+    <div id="schedule-modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:2200; align-items:center; justify-content:center;">
+        <div style="background:#fff; width:90%; max-width:400px; border-radius:8px; overflow:hidden;">
+            <div style="background:#f8f9fa; border-bottom:1px solid #ddd; padding:15px; display:flex; justify-content:space-between; align-items:center;">
+                <h5 id="schedule-modal-title" style="margin:0; font-weight:600;">일정 등록</h5>
+                <button onclick="closeScheduleModal()" style="background:none; border:none; font-size:1.2rem; cursor:pointer;">&times;</button>
+            </div>
+            <div style="padding:20px;">
+                <p id="schedule-date-display" style="font-weight:600; color:#555; margin-bottom:15px;"></p>
+                <input type="hidden" id="schedule-date-input">
+                <input type="hidden" id="schedule-id-input">
+                
+                <div class="form-group mb-3">
+                    <label>일정 제목</label>
+                    <input type="text" id="schedule-title-input" class="form-control" placeholder="일정을 입력하세요" required>
+                </div>
+                
+                <div style="display:flex; justify-content:space-between; margin-top:20px;">
+                    <button id="btn-delete-schedule" class="btn btn-danger" onclick="deleteSchedule()" style="display:none;">삭제</button>
+                    <div style="margin-left:auto; display:flex; gap:10px;">
+                        <button class="btn btn-secondary" onclick="closeScheduleModal()">취소</button>
+                        <button class="btn btn-primary" onclick="saveSchedule()">저장</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="knowledge_base.js"></script>
+    <script src="calendar.js"></script>
     <script src="main.js"></script>
 
     <!-- Certificate Lightbox Modal -->
@@ -862,6 +931,10 @@
                     <a href="javascript:void(0)" onclick="openBoardList()" class="card text-center" style="text-decoration:none; padding:30px 15px; border:1px solid #eee; border-radius:8px; transition:all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
                         <i class="ph-fill ph-megaphone text-warning" style="font-size:3rem; margin-bottom:15px;"></i>
                         <h6 class="text-dark" style="margin:0; font-weight:600;">사내 공지사항</h6>
+                    </a>
+                    <a href="javascript:void(0)" onclick="openCalendarModal()" class="card text-center" style="text-decoration:none; padding:30px 15px; border:1px solid #eee; border-radius:8px; transition:all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                        <i class="ph-fill ph-calendar-blank text-info" style="font-size:3rem; margin-bottom:15px; color:#17a2b8;"></i>
+                        <h6 class="text-dark" style="margin:0; font-weight:600;">사내 캘린더</h6>
                     </a>
                 </div>
             </div>

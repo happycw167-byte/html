@@ -1561,3 +1561,63 @@ h1, h2, h3, h4, h5, h6 {
 .board-row:hover {
     background-color: #f1f3f5 !important;
 }
+
+/* Calendar Styles */
+.calendar-grid, .calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    width: 100%;
+}
+.calendar-header-day {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+}
+.calendar-day {
+    min-height: 100px;
+    padding: 5px;
+    border: 1px solid #eee;
+    background: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+}
+.calendar-day:hover {
+    background: #f1f8ff;
+}
+.calendar-day.empty {
+    background: #fafafa;
+    cursor: default;
+}
+.calendar-date-number {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+.calendar-day.sunday .calendar-date-number {
+    color: #e74c3c;
+}
+.calendar-day.saturday .calendar-date-number {
+    color: #0056b3;
+}
+.calendar-day.holiday .calendar-date-number {
+    color: #e74c3c;
+}
+.holiday-name {
+    font-size: 0.75rem;
+    color: #e74c3c;
+    margin-bottom: 5px;
+}
+.schedule-item {
+    background: #17a2b8;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
