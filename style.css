@@ -1587,6 +1587,10 @@ h1, h2, h3, h4, h5, h6 {
 .calendar-day:hover {
     background: #f1f8ff;
 }
+.calendar-day.today {
+    background: #fff8e1;
+    border: 2px solid #ffc107;
+}
 .calendar-day.empty {
     background: #fafafa;
     cursor: default;

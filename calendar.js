@@ -32,7 +32,9 @@ const holidays = {
     "2026-05-05": "어린이날",
     "2026-05-24": "부처님오신날",
     "2026-05-25": "대체공휴일",
+    "2026-06-03": "지방 선거일",
     "2026-06-06": "현충일",
+    "2026-07-17": "제헌절",
     "2026-08-15": "광복절",
     "2026-08-17": "대체공휴일(광복절)",
     "2026-09-24": "추석 연휴",
@@ -100,6 +102,9 @@ function renderCalendar() {
     const firstDay = new Date(year, month, 1).getDay();
     const lastDate = new Date(year, month + 1, 0).getDate();
     
+    const today = new Date();
+    const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    
     const calendarBody = document.getElementById('calendar-body');
     calendarBody.innerHTML = '';
     
@@ -121,6 +126,7 @@ function renderCalendar() {
         dayDiv.className = 'calendar-day';
         if (currentDayOfWeek === 0) dayDiv.classList.add('sunday');
         if (currentDayOfWeek === 6) dayDiv.classList.add('saturday');
+        if (currentDayStr === todayStr) dayDiv.classList.add('today');
         
         let holidayName = holidays[currentDayStr];
         if (holidayName) {
