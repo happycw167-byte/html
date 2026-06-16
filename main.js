@@ -116,6 +116,38 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(() => {
                 contactForm.style.display = 'none';
                 if (formSuccess) formSuccess.style.display = 'flex';
+                
+                // 사내 게시판 자동 등록 로직
+                try {
+                    const nameVal = formData.get('name') || '익명';
+                    const phoneVal = formData.get('phone') || '없음';
+                    const emailValStr = formData.get('email') || '없음';
+                    const typeVal = formData.get('type') || '기타 문의';
+                    const msgVal = formData.get('message') || ''; // 이미 [회신받을 이메일: ...] 문구가 병합되어 있음
+                    
+                    const boardTitle = `[웹사이트 문의 접수] ${typeVal} - ${nameVal}`;
+                    const boardContent = `고객명/회사명: ${nameVal}\n연락처: ${phoneVal}\n이메일: ${emailValStr}\n문의유형: ${typeVal}\n\n[문의내용]\n${msgVal}`;
+                    
+                    const t = new Date();
+                    const dateStr = t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0');
+                    const newId = boardData.length > 0 ? Math.max(...boardData.map(d => d.id)) + 1 : 1;
+                    
+                    const newItem = {
+                        id: newId,
+                        title: boardTitle,
+                        content: boardContent,
+                        author: "시스템 자동등록",
+                        date: dateStr,
+                        fileName: ""
+                    };
+                    boardData.push(newItem);
+                    localStorage.setItem('boardData', JSON.stringify(boardData));
+                    if(typeof renderBoard === 'function') {
+                        renderBoard();
+                    }
+                } catch (err) {
+                    console.error("사내 게시판 등록 실패:", err);
+                }
             })
             .catch(error => {
                 console.error('Error!', error);
